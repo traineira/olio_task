@@ -1,0 +1,85 @@
+# Extensions
+require:
+  - rubocop-md
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - vendor/bundle/**/*
+    - db/**/**
+    - bin/**
+    - docs/**
+  NewCops: enable
+  TargetRubyVersion: 3.1
+  UseCache: true
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+  Exclude:
+    - 'spec/**/*'
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Naming/VariableNumber:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/NamedSubject:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+RSpec/DescribedClass:
+  SkipBlocks: true
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Enabled: false
