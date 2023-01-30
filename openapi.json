@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Olio Task",
+    "description": "This a task for Olio",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "paths": {
+    "/articles": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "Articles-index",
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Used for pagination of response data (default: 20 items per response).",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Returns a list of articles in the defined URL"
+          }
+        },
+        "description": "Returns a list of articles in the defined URL\n\nArticles can be liked.",
+        "summary": "Returns a list of articles in the defined URL",
+        "x-controller": "articles",
+        "x-action": "index"
+      }
+    },
+    "/articles/update_liked": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "Articles-update_liked",
+        "parameters": [
+          {
+            "name": "external_id",
+            "description": "Represents the external id of the article to update",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "liked",
+            "description": "The new liked status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "description": "Sets the articles liked status",
+        "summary": "Sets the articles liked status",
+        "x-controller": "articles",
+        "x-action": "update_liked"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Articles",
+      "description": "This document describes displaying all the articles and updating it's liked status"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Article": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "the identifier for the article"
+          },
+          "external_id": {
+            "type": "integer",
+            "description": "the external indentifier for the article. It must be unique"
+          },
+          "liked": {
+            "type": "boolean",
+            "description": "the boolean representing if the article is liked"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "securitySchemes": {
+    }
+  }
+}
