@@ -23,11 +23,11 @@
         rake db:create
         ```
   4. Database initialization
-    1. Run database migrations by running:
+     1. Run database migrations by running:
         ```
         rake db:migrate
         ```
-    2. Run test migrations as well:
+     2. Run test migrations as well:
         ```
         rails db:test:prepare
         ```
