@@ -7,7 +7,7 @@
       <% @articles.each do |article| %>
         <tr>
           <td>
-            <%= image_tag article["photos"].first["files"]["small"] %>
+            <%= image_tag(article["photos"]&.first&.dig("files", "small"), alt: "") %>
           </td>
           <td>
             <%= article["title"] %> <br>

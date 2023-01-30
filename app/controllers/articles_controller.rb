@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
   def update_liked
     article = Article.find_by(external_id: permitted_params.fetch(:external_id))
     article.update(liked: permitted_params[:liked].present?)
+    # We could track likes pressed here
     render json: {}, status: :ok, content_type: "application/json"
   end
 
