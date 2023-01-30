@@ -1,34 +1,43 @@
 # frozen_string_literal: true
 
-class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[show edit update destroy]
+# @resource Articles
+#
+# This document describes displaying all the articles and updating it's liked status
+#
 
-  # GET /articles or /articles.json
+class ArticlesController < ApplicationController
+  ##
+  # Returns a list of articles in the defined URL
+  #
+  # Articles can be liked.
+  #
+  # @path [GET] /articles
+  #
+  # @parameter offset [integer] Used for pagination of response data (default: 20 items per response).
+  #
   def index
     articles_url = "https://s3-eu-west-1.amazonaws.com/olio-staging-images/developer/test-articles-v4.json"
-    @articles = ArticlesRetriever.new(articles_url:)
+    @articles = ArticlesRetriever.new(articles_url:).execute
   end
 
-  # GET /articles/1 or /articles/1.json
-  def show
-  end
-
-  # PATCH/PUT /articles/1 or /articles/1.json
-  def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+  ##
+  # Sets the articles liked status
+  #
+  # @path [POST] /articles/update_liked
+  #
+  # @parameter external_id [integer] Represents the external id of the article to update
+  # @parameter liked [boolean] The new liked status
+  # @response 200 Successful operation
+  #
+  def update_liked
+    article = Article.find_by(external_id: permitted_params.fetch(:external_id))
+    article.update(liked: permitted_params[:liked].present?)
+    render json: {}, status: :ok, content_type: "application/json"
   end
 
   private
 
-  def article_params
-    params.require(:article).permit(:external_id, :liked)
+  def permitted_params
+    params.permit(:external_id, :liked)
   end
 end

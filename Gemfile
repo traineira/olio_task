@@ -58,12 +58,12 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
-  gem 'shoulda-matchers'
+  gem "shoulda-matchers"
   gem "webdrivers"
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "psych", "< 4.0.0"
-
 gem "json-stream"
+gem "swagger_yard"

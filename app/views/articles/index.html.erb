@@ -3,12 +3,26 @@
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <table>
+      <% @articles.each do |article| %>
+        <tr>
+          <td>
+            <%= image_tag article["photos"].first["files"]["small"] %>
+          </td>
+          <td>
+            <%= article["title"] %> <br>
+            <%= article["description"] %>
+          </td>
+          <td>
+              <%= check_box_tag("liked", true, article["liked"],
+              {
+                onchange: "$(this).data('params', 'liked=' + this.checked)",
+                data: { url: url_for(action: "update_liked", external_id: article["id"]), remote: true, method: :post }
+              }) %>
+              <%= label_tag(:liked, "Like!") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New article", new_article_path %>
