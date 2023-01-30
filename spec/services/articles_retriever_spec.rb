@@ -69,7 +69,8 @@ describe ArticlesRetriever do
           "roles" => ["Consumer", "Food Waste Hero", "Volunteer", "Administrator"],
           "location" => {"latitude" => 51.7645, "longitude" => -3.79133},
           "rating" => {"rating" => 10, "number" => 15},
-          "verifications" => [{"method" => "sms"}, {"method" => "facebook"}]},
+          "verifications" => [{"method" => "sms"}, {"method" => "facebook"}]
+        },
         "first" => false,
         "last_listed" => "2020-12-12T10:49:18.000Z",
         "pickups" => {"multiple" => false, "users" => [], "items" => 1},
