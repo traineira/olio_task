@@ -62,8 +62,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-
-gem "psych", "< 4.0.0"
 gem "json-stream"
+gem "psych", "< 4.0.0"
 gem "swagger_yard"
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
