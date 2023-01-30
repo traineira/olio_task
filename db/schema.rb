@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_29_191418) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_130714) do
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.integer "external_id"
-    t.boolean "liked"
+    t.boolean "liked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
