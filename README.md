@@ -3,12 +3,15 @@
   - Ruby 3.1.2
 * System dependencies
   - MySQL
+  - NodeJs
 ## Configuration
-  1. Install all necessary gems by running:
+  1. Install `rvm` following these instructions: https://rvm.io/rvm/install
+  2. Install `ruby 3.1.2` by following the RVM instruction, found here https://rvm.io/rubies/installing
+  3. Install all necessary gems by running:
       ```
       bundle install
       ```
-  2. Install Node(version used was v14.16.1) by running by following these instructions https://nodejs.org/en/download/ and then:
+  4. Install Node(version used was v14.16.1) by running by following these instructions https://nodejs.org/en/download/ and then:
      1. Install Yarn by running
         ```
         npm install --global yarn
@@ -17,12 +20,12 @@
         ```
         yarn
         ```
-  3. Database creation
+  5. Database creation
      Setup the Database by running:
         ```
         rake db:create
         ```
-  4. Database initialization
+  6. Database initialization
      1. Run database migrations by running:
         ```
         rake db:migrate
